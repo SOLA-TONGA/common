@@ -98,4 +98,7 @@ public class RolesConstants {
     public static final String ADMIN_MANAGE_REFDATA = "ManageRefdata";
     public static final String ADMIN_MANAGE_SETTINGS = "ManageSettings";
     public static final String ADMIN_MANAGE_BR = "ManageBR";
+
+    // BULK APPLICATION
+    public static final String BULK_APPLICATION = "BulkApplication";
 }
