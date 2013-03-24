@@ -55,6 +55,8 @@ import org.sola.common.messaging.ServiceMessage;
  */
 public class FileUtility {
 
+    public final static String csv = "csv";
+    
     private static long maxCacheSizeBytes = 200 * 1024 * 1024;
     private static long resizedCacheSizeBytes = 120 * 1024 * 1024;
     private static int minNumberCachedFiles = 10;
@@ -218,6 +220,20 @@ public class FileUtility {
         String ext = null;
         if (fileName.lastIndexOf(".") > 0 && fileName.lastIndexOf(".") < fileName.length()) {
             ext = fileName.substring(fileName.lastIndexOf(".") + 1);
+        }
+        return ext;
+    }
+    
+    /*
+     * Get the extension of a file.
+     */  
+    public static String getFileExtension(File f) {
+        String ext = null;
+        String s = f.getName();
+        int i = s.lastIndexOf('.');
+
+        if (i > 0 &&  i < s.length() - 1) {
+            ext = s.substring(i+1).toLowerCase();
         }
         return ext;
     }
