@@ -68,7 +68,8 @@ public class RolesConstants {
     public static final String ADMINISTRATIVE_BA_UNIT_PRINT_CERT = "BaunitCertificate";
     public static final String ADMINISTRATIVE_BA_UNIT_SEARCH = "BaunitSearch";
     public static final String ADMINISTRATIVE_SYSTEMATIC_REGISTRATION = "systematicRegn";
-
+    public static final String ADMINISTRATIVE_RIGHTS_EXPORT = "RightsExport";
+    
     // TRANSACTIONAL DOCUMENTS
     public static final String SOURCE_TRANSACTIONAL = "TransactionCommit";
 
