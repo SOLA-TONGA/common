@@ -20,6 +20,7 @@
  */
 package org.sola.common;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -247,6 +248,75 @@ public class DateUtility {
         return sdf.format(date);
     }
 
+    /**
+     * Returns medium date string representation in localized format (e.g. 02/11/2012).
+     * @param date Date to convert into string
+     * @param includeTime Indicates whether to append time string or not. 
+     * If true, time string will be appended in short format (e.g. 11:01)
+     */
+    public static String getMediumDateString(Date date, boolean includeTime){
+        if(includeTime){
+            return getDateTimeString(date, DateFormat.MEDIUM, DateFormat.SHORT);
+        } else {
+            return getDateString(date, DateFormat.MEDIUM);
+        }
+    }
+    
+    /**
+     * Returns long date string representation in localized format (e.g. February 11, 2012).
+     * @param date Date to convert into string
+     * @param includeTime Indicates whether to append time string or not. 
+     * If true, time string will be appended in short format (e.g. 11:01)
+     */
+    public static String getLongDateString(Date date, boolean includeTime){
+        if(includeTime){
+            return getDateTimeString(date, DateFormat.LONG, DateFormat.SHORT);
+        } else {
+            return getDateString(date, DateFormat.LONG);
+        }
+    }
+    
+    /**
+     * Returns short date string representation in localized format (e.g. 02/11/12).
+     * @param date Date to convert into string
+     * @param includeTime Indicates whether to append time string or not. 
+     * If true, time string will be appended in short format (e.g. 11:01)
+     */
+    public static String getShortDateString(Date date, boolean includeTime){
+        if(includeTime){
+            return getDateTimeString(date, DateFormat.SHORT, DateFormat.SHORT);
+        } else {
+            return getDateString(date, DateFormat.SHORT);
+        }
+    }
+    
+    /**
+     * Returns date string representation in localized format.
+     * @param date Date to convert into string
+     * @param dateStyle Date style format (DateFormat.SHORT, DateFormat.MEDIUM, DateFormat.LONG)
+     */
+    public static String getDateString(Date date, int dateStyle){
+        if(date == null){
+            return "";
+        }
+        DateFormat f = DateFormat.getDateInstance(dateStyle);
+        return f.format(date);
+    }
+    
+    /**
+     * Returns date and time string representation in localized format.
+     * @param date Date to convert into string
+     * @param dateStyle Date style format (DateFormat.SHORT, DateFormat.MEDIUM, DateFormat.LONG)
+     * @param timeStyle Time style format (DateFormat.SHORT, DateFormat.MEDIUM, DateFormat.LONG)
+     */
+    public static String getDateTimeString(Date date, int dateStyle, int timeStyle){
+        if(date == null){
+            return "";
+        }
+        DateFormat f = DateFormat.getDateTimeInstance(dateStyle, timeStyle);
+        return f.format(date);
+    }
+    
     /**
      * Returns the day after <code>date</code>.
      *
