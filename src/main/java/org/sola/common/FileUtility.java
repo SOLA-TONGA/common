@@ -876,6 +876,10 @@ public class FileUtility {
 
             // Get the page to extract the subimage from
             PDFPage page = pdffile.getPage(pageNum, true);
+            
+            if (page ==  null) {
+                throw new Exception("PDF does not have " + pageNum + "pages.");
+            }
 
             // Validate the extract parameters and set to default values if invalid
             // values have been provided. 
