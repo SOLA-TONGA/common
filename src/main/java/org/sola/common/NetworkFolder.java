@@ -232,6 +232,7 @@ public class NetworkFolder {
                 try {
                     SmbFile file = new SmbFile(folder + fileName, networkAuth);
                     FileUtility.writeFile(file.getInputStream(), destination);
+                    destination.setLastModified(file.lastModified());
                 } catch (Exception ex) {
                     throw new SOLAException(ServiceMessage.EXCEPTION_NETWORK_SCAN_FOLDER, ex);
                 }
@@ -239,6 +240,7 @@ public class NetworkFolder {
                 try {
                     File file = new File(folder + fileName);
                     FileUtility.writeFile(new FileInputStream(file), destination);
+                    destination.setLastModified(file.lastModified());
                 } catch (Exception ex) {
                     throw new SOLAException(ServiceMessage.EXCEPTION_NETWORK_SCAN_FOLDER, ex);
                 }
@@ -307,6 +309,36 @@ public class NetworkFolder {
                     }
                     result.addAll(temp);
                 }
+            }
+        }
+        return result;
+    }
+
+    /**
+     * Retrieves meta data about the specified file
+     *
+     * @param fileName
+     * @return
+     */
+    public FileMetaData getMetaData(String fileName) {
+        FileMetaData result = null;
+        String filePathName = fileName.replaceAll(File.pathSeparator, "/");
+        if (fileExists(filePathName)) {
+            result = new FileMetaData();
+            if (isNetworkFolder) {
+                try {
+                    SmbFile file = new SmbFile(folder + filePathName, networkAuth);
+                    result.setModificationDate(new Date(file.lastModified()));
+                    result.setFileSize(file.length());
+                    result.setName(fileName);
+                } catch (Exception ex) {
+                    throw new SOLAException(ServiceMessage.EXCEPTION_NETWORK_SCAN_FOLDER, ex);
+                }
+            } else {
+                File file = new File(folder + filePathName);
+                result.setModificationDate(new Date(file.lastModified()));
+                result.setFileSize(file.length());
+                result.setName(fileName);
             }
         }
         return result;
