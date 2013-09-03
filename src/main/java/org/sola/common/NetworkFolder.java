@@ -51,6 +51,8 @@ import org.sola.common.messaging.ServiceMessage;
 public class NetworkFolder {
 
     private final static String SAMBA_PREFIX = "smb://";
+    //Allow 10s to wait before timing out the connection
+    private final static String CONNECTION_TIMEOUT_MS = "10000";
     private String folder;
     private NtlmPasswordAuthentication networkAuth;
     boolean isNetworkFolder = false;
@@ -82,6 +84,9 @@ public class NetworkFolder {
      * @param pword The password to use to connect to the file share.
      */
     public NetworkFolder(String folderLocation, String domain, String user, String pword) {
+        // Set the connection timeout so that the user doesn't have to wait for an 
+        // excessive amount of time if the Network Server is unreachable. 
+        System.setProperty("jcifs.smb.client.connTimeout", CONNECTION_TIMEOUT_MS); 
         isNetworkFolder = true;
         if (folderLocation != null) {
             // Samba share, so make sure all of the path separators are / instead of \
