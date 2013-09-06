@@ -36,6 +36,19 @@ package org.sola.common;
 public class ConfigConstants {
 
     /**
+     * Number of days before a users password expires. Calculated from the last
+     * date the user changed their password. Recommended values are 60, 90 or
+     * 180. If NULL (or settings is disabled), then no password expiry applies.
+     * Default is 90 days. SOLA will prompt the user to change their password if
+     * it is within 14 days of expiry so it is recommended to set it to a value
+     * > 14. Changes to this value will be recognized immediately if the
+     * SolaRealm in Glassfish is setup to use the system.active_users view for
+     * username details. This setting value is used directly by the
+     * system.user_pword_expiry view (and indirectly by the system.active_users
+     * view).tetest2
+     */
+    public static final String PWORD_EXPIRY_DAYS = "pword-expiry-days";
+    /**
      * tax-rate - The tax rate to use for financial calculations. Changes to
      * this setting will have immediate effect. Default 0.075.
      */
