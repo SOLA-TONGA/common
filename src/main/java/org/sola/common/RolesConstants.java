@@ -86,7 +86,7 @@ public class RolesConstants {
     public static final String PARTY_SAVE = "PartySave";
     public static final String PARTY_RIGHTHOLDERS_SAVE = "RHSave";
     // REPORTS
-    public static final String REPORTS_VIEW = "ReportGen";
+    public static final String REPORTS_VIEW = "ReportGenerate";
     // ARCHIVE
     public static final String ARCHIVE_ARCHIVE_APPS = "ArchiveApps";
     // ADMIN
