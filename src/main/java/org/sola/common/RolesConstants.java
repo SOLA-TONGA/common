@@ -38,7 +38,6 @@ public class RolesConstants {
     // DASHBOARD
     public static final String DASHBOARD_VIEW_ASSIGNED_APPS = "DashbrdViewAssign";
     public static final String DASHBOARD_VIEW_UNASSIGNED_APPS = "DashbrdViewUnassign";
-    public static final String DASHBOARD_VIEW_OWN_APPS = "DashbrdViewOwn";
     // APPLICATION
     public static final String APPLICATION_VIEW_APPS = "ApplnView";
     public static final String APPLICATION_CREATE_APPS = "ApplnCreate";
@@ -84,11 +83,10 @@ public class RolesConstants {
     public static final String CADASTRE_PARCEL_SAVE = "ParcelSave";
     // PARTY
     public static final String PARTY_SAVE = "PartySave";
+    public static final String PARTY_SEARCH = "PartySearch";
     public static final String PARTY_RIGHTHOLDERS_SAVE = "RHSave";
     // REPORTS
     public static final String REPORTS_VIEW = "ReportGenerate";
-    // ARCHIVE
-    public static final String ARCHIVE_ARCHIVE_APPS = "ArchiveApps";
     // ADMIN
     public static final String ADMIN_MANAGE_SECURITY = "ManageSecurity";
     public static final String ADMIN_MANAGE_REFDATA = "ManageRefdata";
