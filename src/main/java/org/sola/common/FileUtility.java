@@ -235,6 +235,19 @@ public class FileUtility {
         return ext;
     }
 
+    /**
+     * Returns file name excluding extention.
+     *
+     * @param fileName The name of the file.
+     */
+    public static String getFileNameWithoutExtension(String fileName) {
+        String name = fileName;
+        if (fileName.lastIndexOf(".") > 0 && fileName.lastIndexOf(".") < fileName.length()) {
+            name = fileName.substring(0, fileName.lastIndexOf("."));
+        }
+        return name;
+    }
+
     /*
      * Get the extension of a file.
      */
@@ -399,16 +412,16 @@ public class FileUtility {
                     // draw the first page to an image
                     PDFPage page = pdffile.getPage(0);
 
-                    //get the width and height for the doc at the default zoom 
-                    Rectangle rect = new Rectangle(0, 0,
-                            (int) page.getBBox().getWidth(),
-                            (int) page.getBBox().getHeight());
-
                     //generate the image
+                    //#319 Improve quality of the image preview by ensuring the whole page
+                    // is captured correctly post any rotation that may be required. 
+                    // Use a multiple of 3 to increase the image depth for better image
+                    // definition. 
                     thumbnail = page.getImage(
-                            rect.width, rect.height, //width & height
-                            rect, // clip rect
-                            null, // null for the ImageObserver
+                            (int) page.getWidth() * 3,
+                            (int) page.getHeight() * 3,
+                            null, // null for the clip rectangle to ensure entire page is captured
+                            null,
                             true, // fill background with white
                             true // block until drawing is done
                             );
