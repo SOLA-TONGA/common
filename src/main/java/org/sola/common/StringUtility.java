@@ -10,7 +10,7 @@ public class StringUtility {
      * @param value String value to check
      */
     public static boolean isEmpty(String value){
-        return value == null || value.isEmpty();
+        return value == null || value.trim().isEmpty();
     }
     
     /** 
