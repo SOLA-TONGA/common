@@ -70,10 +70,11 @@ public class NumberUtility {
                 if (area.compareTo(new BigDecimal("10000")) >= 0) {
                     // The area is >= 10,000 so format as hectares
                     area = area.divide(new BigDecimal("10000"));
-                    area.setScale(3, RoundingMode.DOWN);
+                    area = area.setScale(3, RoundingMode.DOWN);
                     result = areaFormatter.valueToString(area) + "ha";
                 } else {
                     // Format the area has metres squared
+                    area = area.setScale(0, RoundingMode.DOWN);
                     result = areaFormatter.valueToString(area) + "m" + (char) 178; // Superscript 2
                 }
             } catch (ParseException psex) {
@@ -181,7 +182,7 @@ public class NumberUtility {
                 }
                 // Calculate the area meters for the imperial value. 
                 Double areaTmp = (acre + (rood / 4) + (perch / 160)) * METRES_IN_ACRE;
-                result = new BigDecimal(areaTmp).setScale(2, RoundingMode.DOWN);
+                result = new BigDecimal(areaTmp).setScale(1, RoundingMode.DOWN);
             }
         }
         return result;
