@@ -341,9 +341,16 @@ public class FileUtility {
                     // The file could not be opened. The most likely cause is there is no editor
                     // installed for the file extension, but it may be due to file security 
                     // restrictions. Either way, inform the user they should open the file manually. 
+                    LogUtility.log("Unable to open file " + file.getAbsolutePath(), ex);
                     fileOpened = false;
                 }
+            } else {
+                LogUtility.log("Unable to open file " + file.getAbsolutePath()
+                        + ". Desktop OPEN action is not supported");
             }
+        } else {
+            LogUtility.log("Unable to open file " + file.getAbsolutePath()
+                    + ". Desktop not supported");
         }
         if (!fileOpened) {
             // The Java Desktop is not supported on this platform. Riase a mesage to 
@@ -500,7 +507,10 @@ public class FileUtility {
     public static boolean isExecutable(String fileName) {
         String extension = getFileExtension(fileName);
         boolean result = extension.equalsIgnoreCase("exe") || extension.equalsIgnoreCase("msi")
-                || extension.equalsIgnoreCase("bat") || extension.equalsIgnoreCase("cmd");
+                || extension.equalsIgnoreCase("bat") || extension.equalsIgnoreCase("cmd")
+                || extension.equalsIgnoreCase("jar") || extension.equalsIgnoreCase("app")
+                || extension.equalsIgnoreCase("apk") || extension.equalsIgnoreCase("bin")
+                || extension.equalsIgnoreCase("reg") || extension.equalsIgnoreCase("vb");
         return result;
     }
 
@@ -889,8 +899,8 @@ public class FileUtility {
 
             // Get the page to extract the subimage from
             PDFPage page = pdffile.getPage(pageNum, true);
-            
-            if (page ==  null) {
+
+            if (page == null) {
                 throw new Exception("PDF does not have " + pageNum + "pages.");
             }
 
