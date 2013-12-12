@@ -68,6 +68,7 @@ public class RolesConstants {
     public static final String ADMINISTRATIVE_SYSTEMATIC_REGISTRATION = "systematicRegn";
     public static final String ADMINISTRATIVE_RIGHTS_EXPORT = "RightsExport";
     public static final String ADMINISTRATIVE_CASHIER_IMPORT = "CashierImport";
+    public static final String ADMINISTRATIVE_VIEW_PROTECTED_FIELDS = "ViewProtectedFields";
     // TRANSACTIONAL DOCUMENTS
     public static final String SOURCE_TRANSACTIONAL = "TransactionCommit";
     // DOCUMENTS
