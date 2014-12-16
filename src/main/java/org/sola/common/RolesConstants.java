@@ -95,4 +95,7 @@ public class RolesConstants {
     public static final String ADMIN_CHANGE_PASSWORD = "ChangePassword";
     // BULK APPLICATION
     public static final String BULK_APPLICATION = "BulkApplication";
+    // DRAFTING
+    public static final String DRAFTING_SEARCH = "DraftingSearch";
+    
 }
