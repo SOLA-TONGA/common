@@ -97,5 +97,6 @@ public class RolesConstants {
     public static final String BULK_APPLICATION = "BulkApplication";
     // DRAFTING
     public static final String DRAFTING_SEARCH = "DraftingSearch";
+    public static final String DRAFTING_EDIT = "DraftingEdit";
     
 }
