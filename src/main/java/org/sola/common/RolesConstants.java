@@ -98,5 +98,6 @@ public class RolesConstants {
     // DRAFTING
     public static final String DRAFTING_SEARCH = "DraftingSearch";
     public static final String DRAFTING_EDIT = "DraftingEdit";
+    public static final String DRAFTING_REMOVE = "DraftingRemove";
     
 }
