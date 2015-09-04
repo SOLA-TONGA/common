@@ -99,5 +99,8 @@ public class RolesConstants {
     public static final String DRAFTING_SEARCH = "DraftingSearch";
     public static final String DRAFTING_EDIT = "DraftingEdit";
     public static final String DRAFTING_REMOVE = "DraftingRemove";
+    // MINISTER'S OFFICE
+    public static final String MINISTER_INWARD_SEARCH = "MinisterInwardSearch";
+    public static final String MINISTER_INWARD_EDIT = "MinisterInwardEdit";
     
 }
